@@ -11,17 +11,14 @@ public class Main {
         // Creating the panel
         JPanel panel = new JPanel();
         panel.setBackground(new Color(236, 88, 0));
-        panel.setLayout(new GridLayout(2, 1));
+        panel.setLayout(new BorderLayout());
 
         // Creating components
-        JLabel label1 = new JLabel("Welcome to Tiger Ball!");
-        Font font1 = new Font();
-
-        JButton button1 = new JButton("START");
+        JLabel label1 = new JLabel("TIGER TETRIS!!!");
+        // make a label or something to create a line at the top of the screen
 
         // Adding components to the panel
-        panel.add(label1);
-        panel.add(button1);
+        panel.add(label1, BorderLayout.NORTH);
 
 
 

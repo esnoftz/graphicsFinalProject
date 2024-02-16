@@ -1,31 +1,41 @@
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 
 public class Main {
     public static void main(String[] args) {
+        // Idea: Have three present boxes on the screen and have the user pick one. Then inside will be a random number of balls. Could call it 100 balls
+        // or something. The goal is to fill up the jar with 100 balls in as few tries as possible.
+
         // Creating the frame
         JFrame frame = new JFrame();
         frame.setSize(500, 500);
 
         // Creating the panel
-        JPanel panel = new JPanel();
-        panel.setBackground(new Color(236, 88, 0));
-        panel.setLayout(new BorderLayout());
+        MyPanel panel = new MyPanel();
+        MyPanel panel2 = new MyPanel();
 
         // Creating components
-        JLabel label1 = new JLabel("TIGER TETRIS!!!");
-        // make a label or something to create a line at the top of the screen
-
-        // Adding components to the panel
-        panel.add(label1, BorderLayout.NORTH);
+        JButton button1 = new JButton("Click Me!");
 
 
+        // Adding components to panel
+        panel.add(button1);
 
-        // Adding the panel to the frame
+        // Adding panel to frame
         frame.add(panel);
 
-        // Making the frame visible
+        // Making frame visible
         frame.setVisible(true);
+
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //frame.add(panel2);
+            }
+        });
+
     }
 }

@@ -24,17 +24,24 @@ public class Main {
         JButton button1 = new JButton("#1");
         JButton button2 = new JButton("#2");
         JButton button3 = new JButton("#3");
-        JLabel label1 = new JLabel("#1");
-        JLabel label2 = new JLabel("#2");
-        JLabel label3 = new JLabel("#3");
+        JLabel label1 = new JLabel("                  #1");
+        JLabel label2 = new JLabel("                  #2");
+        JLabel label3 = new JLabel("                  #3");
+        ImageIcon open = new ImageIcon("Images/closedPresentPicture.png");
+        ImageIcon closed =  new ImageIcon("Images/openPresentPicture.png");
+        JLabel openPresPic = new JLabel(open);
+        JLabel closedPresPic = new JLabel(closed);
 
         // Adding components to panel
         panel.add(button1);
         panel.add(button2);
         panel.add(button3);
         panel.add(label1);
+        label1.setVisible(false);
         panel.add(label2);
+        label2.setVisible(false);
         panel.add(label3);
+        label3.setVisible(false);
 
         // Adding panel to frame
         frame.add(panel);
@@ -45,7 +52,27 @@ public class Main {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                label1.setVisible(true);
+                label2.setVisible(false);
+                label3.setVisible(false);
+            }
+        });
 
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                label2.setVisible(true);
+                label1.setVisible(false);
+                label3.setVisible(false);
+            }
+        });
+
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                label3.setVisible(true);
+                label1.setVisible(false);
+                label2.setVisible(false);
             }
         });
 

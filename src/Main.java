@@ -18,19 +18,21 @@ public class Main {
 
         // Creating the panel
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(2, 3));
+       // panel.setLayout(new GridLayout(2, 3));
 
         // Creating components
-        JButton button1 = new JButton("#1");
+        ImageIcon closed = new ImageIcon("Images/closedPresentPicture.png");
+
+
+        ImageIcon open =  new ImageIcon("Images/openPresentPicture.png");
+        open.setImage(open.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+        JButton button1 = new JButton(open);
+        button1.setSize(3, 3);
         JButton button2 = new JButton("#2");
         JButton button3 = new JButton("#3");
         JLabel label1 = new JLabel("                  #1");
         JLabel label2 = new JLabel("                  #2");
         JLabel label3 = new JLabel("                  #3");
-        ImageIcon open = new ImageIcon("Images/closedPresentPicture.png");
-        ImageIcon closed =  new ImageIcon("Images/openPresentPicture.png");
-        JLabel openPresPic = new JLabel(open);
-        JLabel closedPresPic = new JLabel(closed);
 
         // Adding components to panel
         panel.add(button1);

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56afb821-e594-484b-afb2-bd95c1419208" name="Changes" comment="Added listeners for buttons and inserted present pictures.">
+    <list default="true" id="56afb821-e594-484b-afb2-bd95c1419208" name="Changes" comment="Worked on putting images onto the buttons and resizing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -95,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708622910702</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Worked on putting images onto the buttons and resizing.">
+      <option name="closed" value="true" />
+      <created>1708709272007</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708709272007</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -103,6 +111,7 @@
     <MESSAGE value="Worked on action listeners." />
     <MESSAGE value="Added labels and buttons." />
     <MESSAGE value="Added listeners for buttons and inserted present pictures." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added listeners for buttons and inserted present pictures." />
+    <MESSAGE value="Worked on putting images onto the buttons and resizing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Worked on putting images onto the buttons and resizing." />
   </component>
 </project>

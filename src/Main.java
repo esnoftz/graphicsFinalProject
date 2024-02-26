@@ -22,17 +22,13 @@ public class Main {
 
         // Creating components
         ImageIcon closed = new ImageIcon("Images/closedPresentPicture.png");
-
-
+        closed.setImage(closed.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
         ImageIcon open =  new ImageIcon("Images/openPresentPicture.png");
         open.setImage(open.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-        JButton button1 = new JButton(open);
-        button1.setSize(3, 3);
-        JButton button2 = new JButton("#2");
-        JButton button3 = new JButton("#3");
-        JLabel label1 = new JLabel("                  #1");
-        JLabel label2 = new JLabel("                  #2");
-        JLabel label3 = new JLabel("                  #3");
+        JButton button1 = new JButton(closed);
+        JButton button2 = new JButton(closed);
+        JButton button3 = new JButton(closed);
+        JLabel label1 = new JLabel();
 
         // Adding components to panel
         panel.add(button1);
@@ -40,10 +36,6 @@ public class Main {
         panel.add(button3);
         panel.add(label1);
         label1.setVisible(false);
-        panel.add(label2);
-        label2.setVisible(false);
-        panel.add(label3);
-        label3.setVisible(false);
 
         // Adding panel to frame
         frame.add(panel);
@@ -51,30 +43,45 @@ public class Main {
         // Making frame visible
         frame.setVisible(true);
 
+
+        // Action listeners
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 label1.setVisible(true);
-                label2.setVisible(false);
-                label3.setVisible(false);
+                button1.setIcon(open);
+                button2.setIcon(closed);
+                button3.setIcon(closed);
+                button2.setVisible(false);
+                button3.setVisible(false);
+                //button1.setEnabled(false);
+                label1.setText("" + ((int)(Math.random()* 10) + 1));
             }
         });
 
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                label2.setVisible(true);
-                label1.setVisible(false);
-                label3.setVisible(false);
+                label1.setVisible(true);
+                button2.setIcon(open);
+                button1.setIcon(closed);
+                button3.setIcon(closed);
+                button1.setVisible(false);
+                button3.setVisible(false);
+                label1.setText("" + ((int)(Math.random()* 10) + 1));
             }
         });
 
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                label3.setVisible(true);
-                label1.setVisible(false);
-                label2.setVisible(false);
+                label1.setVisible(true);
+                button3.setIcon(open);
+                button1.setIcon(closed);
+                button2.setIcon(closed);
+                button1.setVisible(false);
+                button2.setVisible(false);
+                label1.setText("" + ((int)(Math.random()* 10) + 1));
             }
         });
 

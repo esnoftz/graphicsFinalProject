@@ -16,8 +16,10 @@ public class Main {
         JFrame frame = new JFrame();
         frame.setSize(500, 500);
 
-        // Creating the panel
-        JPanel panel = new JPanel();
+        // Creating the panels
+        JPanel bigPanel = new JPanel();
+        MyPanel presentPanel = new MyPanel(frame.getWidth(), 75, 0, 0);
+        presentPanel.setSize(presentPanel.getWidth(), presentPanel.getHeight());
        // panel.setLayout(new GridLayout(2, 3));
 
         // Creating components
@@ -31,14 +33,15 @@ public class Main {
         JLabel label1 = new JLabel();
 
         // Adding components to panel
-        panel.add(button1);
-        panel.add(button2);
-        panel.add(button3);
-        panel.add(label1);
+        presentPanel.add(button1);
+        presentPanel.add(button2);
+        presentPanel.add(button3);
+        //panel.add(label1);
         label1.setVisible(false);
 
         // Adding panel to frame
-        frame.add(panel);
+        frame.add(bigPanel);
+        frame.add(presentPanel);
 
         // Making frame visible
         frame.setVisible(true);
@@ -49,12 +52,18 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 label1.setVisible(true);
+
                 button1.setIcon(open);
                 button2.setIcon(closed);
                 button3.setIcon(closed);
-                button2.setVisible(false);
-                button3.setVisible(false);
-                //button1.setEnabled(false);
+
+                //button2.setVisible(false);
+                //button3.setVisible(false);
+                button1.setEnabled(false);
+                button2.setEnabled(false);
+                button3.setEnabled(false);
+
+                button1.setBackground(Color.GREEN);
                 label1.setText("" + ((int)(Math.random()* 10) + 1));
             }
         });
@@ -86,4 +95,5 @@ public class Main {
         });
 
     }
+
 }

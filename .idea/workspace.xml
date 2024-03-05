@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56afb821-e594-484b-afb2-bd95c1419208" name="Changes" comment="Worked on making buttons work.">
-      <change afterPath="$PROJECT_DIR$/src/MyPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Present.java" afterDir="false" />
+    <list default="true" id="56afb821-e594-484b-afb2-bd95c1419208" name="Changes" comment="Added a panel for presents on top of the bigger panel.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708969643448</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added a panel for presents on top of the bigger panel.">
+      <option name="closed" value="true" />
+      <created>1709141303832</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709141303832</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -123,6 +128,7 @@
     <MESSAGE value="Added listeners for buttons and inserted present pictures." />
     <MESSAGE value="Worked on putting images onto the buttons and resizing." />
     <MESSAGE value="Worked on making buttons work." />
-    <option name="LAST_COMMIT_MESSAGE" value="Worked on making buttons work." />
+    <MESSAGE value="Added a panel for presents on top of the bigger panel." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a panel for presents on top of the bigger panel." />
   </component>
 </project>

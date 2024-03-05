@@ -31,6 +31,8 @@ public class Main {
         JButton button2 = new JButton(closed);
         JButton button3 = new JButton(closed);
         JLabel label1 = new JLabel();
+        JLabel label2 = new JLabel();
+        JLabel label3 = new JLabel();
 
         // Adding components to panel
         presentPanel.add(button1);
@@ -57,8 +59,6 @@ public class Main {
                 button2.setIcon(closed);
                 button3.setIcon(closed);
 
-                //button2.setVisible(false);
-                //button3.setVisible(false);
                 button1.setEnabled(false);
                 button2.setEnabled(false);
                 button3.setEnabled(false);
@@ -77,7 +77,7 @@ public class Main {
                 button3.setIcon(closed);
                 button1.setVisible(false);
                 button3.setVisible(false);
-                label1.setText("" + ((int)(Math.random()* 10) + 1));
+                label2.setText("" + ((int)(Math.random()* 10) + 1));
             }
         });
 
@@ -90,7 +90,7 @@ public class Main {
                 button2.setIcon(closed);
                 button1.setVisible(false);
                 button2.setVisible(false);
-                label1.setText("" + ((int)(Math.random()* 10) + 1));
+                label3.setText("" + ((int)(Math.random()* 10) + 1));
             }
         });
 

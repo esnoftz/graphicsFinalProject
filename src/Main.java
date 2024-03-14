@@ -20,7 +20,9 @@ public class Main {
         JPanel bigPanel = new JPanel();
         MyPanel presentPanel = new MyPanel(frame.getWidth(), 75, 0, 0);
         presentPanel.setSize(presentPanel.getWidth(), presentPanel.getHeight());
-       // panel.setLayout(new GridLayout(2, 3));
+        MyPanel labelPanel = new MyPanel(frame.getWidth(), 75, 0, 75);
+        labelPanel.setSize(labelPanel.getWidth(), presentPanel.getHeight());
+        bigPanel.setLayout(new GridLayout(3, 1));
 
         // Creating components
         ImageIcon closed = new ImageIcon("Images/closedPresentPicture.png");
@@ -30,20 +32,21 @@ public class Main {
         JButton button1 = new JButton(closed);
         JButton button2 = new JButton(closed);
         JButton button3 = new JButton(closed);
-        JLabel label1 = new JLabel();
-        JLabel label2 = new JLabel();
-        JLabel label3 = new JLabel();
+        JLabel label1 = new JLabel("hi");
+        JLabel label2 = new JLabel("bye");
+        JLabel label3 = new JLabel("blah");
+        labelPanel.add(label1);
 
         // Adding components to panel
         presentPanel.add(button1);
         presentPanel.add(button2);
         presentPanel.add(button3);
-        //panel.add(label1);
-        label1.setVisible(false);
+        bigPanel.add(presentPanel);
+        bigPanel.add(labelPanel);
 
         // Adding panel to frame
         frame.add(bigPanel);
-        frame.add(presentPanel);
+
 
         // Making frame visible
         frame.setVisible(true);
@@ -72,11 +75,16 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 label1.setVisible(true);
+
                 button2.setIcon(open);
                 button1.setIcon(closed);
                 button3.setIcon(closed);
-                button1.setVisible(false);
-                button3.setVisible(false);
+
+                button1.setEnabled(false);
+                button2.setEnabled(false);
+                button3.setEnabled(false);
+
+                button2.setBackground(Color.GREEN);
                 label2.setText("" + ((int)(Math.random()* 10) + 1));
             }
         });
@@ -85,11 +93,16 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 label1.setVisible(true);
+
                 button3.setIcon(open);
                 button1.setIcon(closed);
                 button2.setIcon(closed);
-                button1.setVisible(false);
-                button2.setVisible(false);
+
+                button1.setEnabled(false);
+                button2.setEnabled(false);
+                button3.setEnabled(false);
+
+                button3.setBackground(Color.GREEN);
                 label3.setText("" + ((int)(Math.random()* 10) + 1));
             }
         });

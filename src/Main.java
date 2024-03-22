@@ -14,15 +14,16 @@ public class Main {
 
         // Creating the frame
         JFrame frame = new JFrame();
-        frame.setSize(500, 500);
+        frame.setSize(1000, 500);
+        frame.setResizable(false);
 
         // Creating the panels
         JPanel bigPanel = new JPanel();
+        bigPanel.setLayout(new GridLayout(7, 1));
         MyPanel presentPanel = new MyPanel(frame.getWidth(), 75, 0, 0);
-        presentPanel.setSize(presentPanel.getWidth(), presentPanel.getHeight());
+        //presentPanel.setSize(presentPanel.getWidth(), presentPanel.getHeight());
         MyPanel labelPanel = new MyPanel(frame.getWidth(), 75, 0, 75);
-        labelPanel.setSize(labelPanel.getWidth(), presentPanel.getHeight());
-        bigPanel.setLayout(new GridLayout(3, 1));
+        //labelPanel.setSize(labelPanel.getWidth(), presentPanel.getHeight());
 
         // Creating components
         ImageIcon closed = new ImageIcon("Images/closedPresentPicture.png");
@@ -38,11 +39,15 @@ public class Main {
         labelPanel.add(label1);
 
         // Adding components to panel
+        bigPanel.add(presentPanel);
+        bigPanel.add(labelPanel);
         presentPanel.add(button1);
         presentPanel.add(button2);
         presentPanel.add(button3);
-        bigPanel.add(presentPanel);
-        bigPanel.add(labelPanel);
+        labelPanel.add(label1);
+        labelPanel.add(label2);
+        labelPanel.add(label3);
+
 
         // Adding panel to frame
         frame.add(bigPanel);

@@ -17,7 +17,7 @@ public class MyPanel extends JPanel {
         this.height = height;
         xPos = x;
         yPos = y;
-        this.setBackground(Color.BLUE);
+        //this.setBackground(Color.BLUE);
     }
 
     public int getWidth() {

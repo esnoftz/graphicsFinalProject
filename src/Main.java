@@ -7,111 +7,223 @@ import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
-        // Idea: Have three present boxes on the screen and have the user pick one. Then inside will be a random number of balls. Could call it 100 balls
-        // or something. The goal is to fill up the jar with 100 balls in as few tries as possible.
-        // To be evil, sometimes some balls will "miss" the jar when being put in. Start out with random colored balls falling
-        // and then turn them green when they are accepted into the jar. Ones that turn red will have "missed" or something
-
-        // Creating the frame
+                                        // FRAME
         JFrame frame = new JFrame();
-        frame.setSize(1000, 500);
+        frame.setSize(1000, 700);
         frame.setResizable(false);
 
-        // Creating the panels
-        JPanel bigPanel = new JPanel();
-        bigPanel.setLayout(new GridLayout(7, 1));
-        MyPanel presentPanel = new MyPanel(frame.getWidth(), 75, 0, 0);
-        //presentPanel.setSize(presentPanel.getWidth(), presentPanel.getHeight());
-        MyPanel labelPanel = new MyPanel(frame.getWidth(), 75, 0, 75);
-        //labelPanel.setSize(labelPanel.getWidth(), presentPanel.getHeight());
 
-        // Creating components
+
+                                        // PANELS
+        // introPanel
+        JPanel introPanel = new JPanel();
+        introPanel.setLayout(new GridLayout(3, 1));
+
+        // bigPanel
+        JPanel bigPanel = new JPanel();
+        bigPanel.setLayout(new GridLayout(3, 1));
+
+        // presentPanel
+        MyPanel presentPanel = new MyPanel(frame.getWidth(), 200, 0, 0);
+        presentPanel.setLayout(new GridLayout(2, 3));
+        presentPanel.setSize(presentPanel.getWidth(), presentPanel.getHeight());
+
+        // instructPanel
+        MyPanel instructPanel = new MyPanel(frame.getWidth(), 35, 0, 0);
+        instructPanel.setSize(instructPanel.getWidth(), instructPanel.getHeight());
+
+        // afterChoosePanel
+        MyPanel afterChoosePanel = new MyPanel(frame.getWidth(), 300, 0, 0);
+        afterChoosePanel.setSize(afterChoosePanel.getWidth(), afterChoosePanel.getHeight());
+        afterChoosePanel.setLayout(new GridLayout(3, 1));
+
+
+
+                                        // COMPONENTS
+        // introPanel Components
+        JLabel titleLabel = new JLabel("               100 Minions");
+        titleLabel.setFont(new Font("Title", 1, 70));
+        JButton instructionsButton = new JButton("Instructions");
+
+        // presentPanel Components
         ImageIcon closed = new ImageIcon("Images/closedPresentPicture.png");
         closed.setImage(closed.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
         ImageIcon open =  new ImageIcon("Images/openPresentPicture.png");
         open.setImage(open.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-        JButton button1 = new JButton(closed);
-        JButton button2 = new JButton(closed);
-        JButton button3 = new JButton(closed);
-        JLabel label1 = new JLabel("hi");
-        JLabel label2 = new JLabel("bye");
-        JLabel label3 = new JLabel("blah");
-        labelPanel.add(label1);
+        JButton present1 = new JButton(closed);
+        JButton present2 = new JButton(closed);
+        JButton present3 = new JButton(closed);
+        present1.setBackground(Color.BLACK);
+        present2.setBackground(Color.BLACK);
+        present3.setBackground(Color.BLACK);
+        JLabel label1 = new JLabel("");
+        JLabel label2 = new JLabel("");
+        JLabel label3 = new JLabel("");
 
-        // Adding components to panel
+        // instructPanel Components
+        JLabel instructLabel = new JLabel("Choose a present to find out how many minions you will earn this round!");
+        instructLabel.setFont(new Font("Instructions", 1, 20));
+
+        // afterChoosePanel Components
+        JButton playButton = new JButton("PLAY!");
+        JLabel afterChooseLabel = new JLabel("");
+        afterChooseLabel.setFont(new Font("Result", 1, 20));
+        JButton resultButton = new JButton("See My Minions!");
+        JButton newRoundButton = new JButton("New Round");
+
+
+
+                                // ADDING COMPONENTS TO PANEL
+        // introPanel
+        introPanel.add(titleLabel);
+        introPanel.add(instructionsButton);
+        introPanel.add(playButton);
+
+        // bigPanel
+        bigPanel.add(instructPanel);
         bigPanel.add(presentPanel);
-        bigPanel.add(labelPanel);
-        presentPanel.add(button1);
-        presentPanel.add(button2);
-        presentPanel.add(button3);
-        labelPanel.add(label1);
-        labelPanel.add(label2);
-        labelPanel.add(label3);
+
+        // presentPanel
+        presentPanel.add(present1);
+        presentPanel.add(present2);
+        presentPanel.add(present3);
+        presentPanel.add(label1);
+        presentPanel.add(label2);
+        presentPanel.add(label3);
+
+        // instructPanel
+        instructPanel.add(instructLabel);
+
+        // afterChoosePanel
+        afterChoosePanel.add(afterChooseLabel);
+        afterChoosePanel.add(resultButton);
+        afterChoosePanel.add(newRoundButton);
 
 
-        // Adding panel to frame
-        frame.add(bigPanel);
 
-
-        // Making frame visible
+                        // ADDING PANELS TO FRAME / MAKING FRAME VISIBLE
+        frame.add(introPanel);
         frame.setVisible(true);
 
 
-        // Action listeners
-        button1.addActionListener(new ActionListener() {
+
+                                        // ACTION LISTENERS
+        playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                label1.setVisible(true);
-
-                button1.setIcon(open);
-                button2.setIcon(closed);
-                button3.setIcon(closed);
-
-                button1.setEnabled(false);
-                button2.setEnabled(false);
-                button3.setEnabled(false);
-
-                button1.setBackground(Color.GREEN);
-                label1.setText("" + ((int)(Math.random()* 10) + 1));
+                frame.remove(introPanel);
+                frame.add(bigPanel);
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
-        button2.addActionListener(new ActionListener() {
+        present1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 label1.setVisible(true);
 
-                button2.setIcon(open);
-                button1.setIcon(closed);
-                button3.setIcon(closed);
+                present1.setIcon(open);
+                present2.setIcon(closed);
+                present3.setIcon(closed);
 
-                button1.setEnabled(false);
-                button2.setEnabled(false);
-                button3.setEnabled(false);
+                present1.setEnabled(false);
+                present2.setEnabled(false);
+                present3.setEnabled(false);
 
-                button2.setBackground(Color.GREEN);
+                present1.setBackground(Color.YELLOW);
+
+                int roundMinions = ((int)(Math.random() * 10) + 1);
+                label1.setText("" + roundMinions);
+                //label1.setHorizontalTextPosition(JLabel.CENTER); why doesn't this do anythingggggg???
                 label2.setText("" + ((int)(Math.random()* 10) + 1));
+                label3.setText("" + ((int)(Math.random()* 10) + 1));
+
+                afterChooseLabel.setText("You have earned " + roundMinions + " minions this round!");
+                bigPanel.add(afterChoosePanel);
+                bigPanel.revalidate();
+                bigPanel.repaint();
             }
         });
 
-        button3.addActionListener(new ActionListener() {
+        present2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 label1.setVisible(true);
 
-                button3.setIcon(open);
-                button1.setIcon(closed);
-                button2.setIcon(closed);
+                present2.setIcon(open);
+                present1.setIcon(closed);
+                present3.setIcon(closed);
 
-                button1.setEnabled(false);
-                button2.setEnabled(false);
-                button3.setEnabled(false);
+                present1.setEnabled(false);
+                present2.setEnabled(false);
+                present3.setEnabled(false);
 
-                button3.setBackground(Color.GREEN);
+                present2.setBackground(Color.YELLOW);
+
+                int roundMinions = (int)(Math.random() * 10) + 1;
+                label1.setText("" + ((int)(Math.random()* 10) + 1));
+                label2.setText("" + roundMinions);
                 label3.setText("" + ((int)(Math.random()* 10) + 1));
+
+                afterChooseLabel.setText("You have earned " + roundMinions + " minions this round!");
+                bigPanel.add(afterChoosePanel);
+                bigPanel.revalidate();
+                bigPanel.repaint();
             }
         });
 
+        present3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                label1.setVisible(true);
+
+                present3.setIcon(open);
+                present1.setIcon(closed);
+                present2.setIcon(closed);
+
+                present1.setEnabled(false);
+                present2.setEnabled(false);
+                present3.setEnabled(false);
+
+                present3.setBackground(Color.YELLOW);
+
+                int roundMinions = (int)(Math.random() * 10) + 1;
+                label1.setText("" + ((int)(Math.random()* 10) + 1));
+                label2.setText("" + ((int)(Math.random()* 10) + 1));
+                label3.setText("" + roundMinions);
+
+                afterChooseLabel.setText("You have earned " + roundMinions + " minions this round!");
+                bigPanel.add(afterChoosePanel);
+                bigPanel.revalidate();
+                bigPanel.repaint();
+            }
+        });
+
+        newRoundButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                present1.setEnabled(true);
+                present2.setEnabled(true);
+                present3.setEnabled(true);
+
+                present1.setIcon(closed);
+                present2.setIcon(closed);
+                present3.setIcon(closed);
+
+                present1.setBackground(Color.BLACK);
+                present2.setBackground(Color.BLACK);
+                present3.setBackground(Color.BLACK);
+
+                label1.setText("");
+                label2.setText("");
+                label3.setText("");
+
+                bigPanel.remove(afterChoosePanel);
+                bigPanel.revalidate();
+                bigPanel.repaint();
+            }
+        });
     }
 
 }

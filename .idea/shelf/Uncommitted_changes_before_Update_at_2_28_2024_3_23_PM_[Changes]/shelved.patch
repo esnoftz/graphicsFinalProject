@@ -1,0 +1,136 @@
+Index: src/MyPanel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javax.swing.*;\r\n\r\npublic class MyPanel extends JPanel {\r\n\r\n\r\n    public MyPanel() {\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/MyPanel.java b/src/MyPanel.java
+--- a/src/MyPanel.java	
++++ b/src/MyPanel.java	
+@@ -1,10 +1,38 @@
+ import javax.swing.*;
++import java.awt.*;
++import java.util.*;
+ 
+ public class MyPanel extends JPanel {
+-
++    private boolean check;
++    private static int colorNum = 1;
++    private int numPieces;
++    private ArrayList<Piece> pieces;
+ 
+     public MyPanel() {
++        check = false;
++        if (colorNum == 1) {
++            colorNum++;
++        } else {
++            colorNum--;
++        }
++        pieces = new ArrayList<Piece>();
++        pieces.add(new Piece(colorNum));
++        numPieces++;
++    }
+ 
++    public void showPiece() {
++        pieces.get(numPieces).drawPiece(pieces.get(numPieces).getGraphics());
+     }
++
++    /*public void paintComponent(Graphics g) {
++        super.paintComponent(g);
++        //if (check) {
++            g.setColor(Color.ORANGE);
++            g.fillRect(20, 20, 50, 20);
++            check = false;
++        //}
++        repaint();
++    }*/
++
+ 
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"56afb821-e594-484b-afb2-bd95c1419208\" name=\"Changes\" comment=\"Worked on layout.\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/MyPanel.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Main.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 1\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2cLI0wvfnwsJFv5aFsiZdlqbzNm\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/esnof/IdeaProjects/graphicsFinalProject/src/Main.java&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-21.0.1-openjdk-21.0.1-249ae16d76d6-a618e4d4\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"56afb821-e594-484b-afb2-bd95c1419208\" name=\"Changes\" comment=\"\" />\r\n      <created>1707884214937</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1707884214937</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,10 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="56afb821-e594-484b-afb2-bd95c1419208" name="Changes" comment="Worked on layout.">
+-      <change afterPath="$PROJECT_DIR$/src/MyPanel.java" afterDir="false" />
++    <list default="true" id="56afb821-e594-484b-afb2-bd95c1419208" name="Changes" comment="Began Tiger Tetris.">
++      <change afterPath="$PROJECT_DIR$/src/Piece.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_16_24__10_48AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_16_24__10_48AM__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/MyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPanel.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javax.swing.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\n\r\n\r\n\r\npublic class Main {\r\n    public static void main(String[] args) {\r\n        // Idea: Have three present boxes on the screen and have the user pick one. Then inside will be a random number of balls. Could call it 100 balls\r\n        // or something. The goal is to fill up the jar with 100 balls in as few tries as possible.\r\n\r\n        // Creating the frame\r\n        JFrame frame = new JFrame();\r\n        frame.setSize(500, 500);\r\n\r\n        // Creating the panel\r\n        MyPanel panel = new MyPanel();\r\n        MyPanel panel2 = new MyPanel();\r\n\r\n        // Creating components\r\n        JButton button1 = new JButton(\"Click Me!\");\r\n\r\n\r\n        // Adding components to panel\r\n        panel.add(button1);\r\n\r\n        // Adding panel to frame\r\n        frame.add(panel);\r\n\r\n        // Making frame visible\r\n        frame.setVisible(true);\r\n\r\n        button1.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                //frame.add(panel2);\r\n            }\r\n        });\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	
++++ b/src/Main.java	
+@@ -1,4 +1,5 @@
+ import javax.swing.*;
++import java.awt.*;
+ import java.awt.event.ActionEvent;
+ import java.awt.event.ActionListener;
+ 
+@@ -33,7 +34,9 @@
+         button1.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+-                //frame.add(panel2);
++                //panel.setBackground(Color.BLUE);
++                panel.doPaint();
++
+             }
+         });
+ 
+Index: src/Piece.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Piece.java b/src/Piece.java
+new file mode 100644
+--- /dev/null	
++++ b/src/Piece.java	
+@@ -0,0 +1,24 @@
++import java.awt.*;
++public class Piece {
++    private Color color;
++
++    public Piece(int num) {
++        if (num == 1) {
++            color = Color.BLACK;
++        } else {
++            color = Color.ORANGE;
++        }
++    }
++
++    public Color getColor() {
++        return color;
++    }
++
++    public void drawPiece(Graphics g) {
++        g.setColor(color);
++        g.fillRect(20, 20, 100, 50);
++    }
++
++
++
++}

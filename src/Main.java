@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 
 
 
@@ -37,11 +38,16 @@ public class Main {
         afterChoosePanel.setSize(afterChoosePanel.getWidth(), afterChoosePanel.getHeight());
         afterChoosePanel.setLayout(new GridLayout(3, 1));
 
+        // minionPanel
+        MyPanel minionPanel = new MyPanel(frame.getWidth(), frame.getHeight(), 0, 0);
+        minionPanel.setSize(minionPanel.getWidth(), minionPanel.getHeight());
+        minionPanel.setLayout(new GridLayout(10, 10));
+
 
 
                                         // COMPONENTS
         // introPanel Components
-        JLabel titleLabel = new JLabel("               100 Minions");
+        JLabel titleLabel = new JLabel("             100 Minions");
         titleLabel.setFont(new Font("Title", 1, 70));
         JButton instructionsButton = new JButton("Instructions");
 
@@ -68,8 +74,12 @@ public class Main {
         JButton playButton = new JButton("PLAY!");
         JLabel afterChooseLabel = new JLabel("");
         afterChooseLabel.setFont(new Font("Result", 1, 20));
-        JButton resultButton = new JButton("See My Minions!");
+        JButton seeMinionsButton = new JButton("See My Minions!");
         JButton newRoundButton = new JButton("New Round");
+
+        // minionPanel Components
+        int totalMinions = 100;
+
 
 
 
@@ -96,7 +106,7 @@ public class Main {
 
         // afterChoosePanel
         afterChoosePanel.add(afterChooseLabel);
-        afterChoosePanel.add(resultButton);
+        afterChoosePanel.add(seeMinionsButton);
         afterChoosePanel.add(newRoundButton);
 
 
@@ -134,6 +144,7 @@ public class Main {
                 present1.setBackground(Color.YELLOW);
 
                 int roundMinions = ((int)(Math.random() * 10) + 1);
+                //totalMinions += roundMinions;
                 label1.setText("" + roundMinions);
                 //label1.setHorizontalTextPosition(JLabel.CENTER); why doesn't this do anythingggggg???
                 label2.setText("" + ((int)(Math.random()* 10) + 1));
@@ -162,6 +173,7 @@ public class Main {
                 present2.setBackground(Color.YELLOW);
 
                 int roundMinions = (int)(Math.random() * 10) + 1;
+                //totalMinions += roundMinions;
                 label1.setText("" + ((int)(Math.random()* 10) + 1));
                 label2.setText("" + roundMinions);
                 label3.setText("" + ((int)(Math.random()* 10) + 1));
@@ -189,6 +201,7 @@ public class Main {
                 present3.setBackground(Color.YELLOW);
 
                 int roundMinions = (int)(Math.random() * 10) + 1;
+                //totalMinions += roundMinions;
                 label1.setText("" + ((int)(Math.random()* 10) + 1));
                 label2.setText("" + ((int)(Math.random()* 10) + 1));
                 label3.setText("" + roundMinions);
@@ -220,6 +233,24 @@ public class Main {
                 label3.setText("");
 
                 bigPanel.remove(afterChoosePanel);
+                bigPanel.revalidate();
+                bigPanel.repaint();
+            }
+        });
+
+        seeMinionsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(int i = 0; i < totalMinions; i++) {
+                    ImageIcon minionIcon = new ImageIcon("Images/minionPicture.png");
+                    minionIcon.setImage(minionIcon.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+                    minionPanel.add(new JLabel(minionIcon));
+                }
+                bigPanel.remove(instructPanel);
+                bigPanel.remove(presentPanel);
+                bigPanel.remove(afterChoosePanel);
+                bigPanel.setLayout(new GridLayout(1, 1));
+                bigPanel.add(minionPanel);
                 bigPanel.revalidate();
                 bigPanel.repaint();
             }

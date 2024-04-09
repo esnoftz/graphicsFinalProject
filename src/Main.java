@@ -144,7 +144,7 @@ public class Main {
                 present1.setBackground(Color.YELLOW);
 
                 int roundMinions = ((int)(Math.random() * 10) + 1);
-                //totalMinions += roundMinions;
+                Minion.minionsEarned += roundMinions;
                 label1.setText("" + roundMinions);
                 //label1.setHorizontalTextPosition(JLabel.CENTER); why doesn't this do anythingggggg???
                 label2.setText("" + ((int)(Math.random()* 10) + 1));
@@ -154,6 +154,8 @@ public class Main {
                 bigPanel.add(afterChoosePanel);
                 bigPanel.revalidate();
                 bigPanel.repaint();
+
+                System.out.println(Minion.minionsEarned);
             }
         });
 
@@ -173,7 +175,7 @@ public class Main {
                 present2.setBackground(Color.YELLOW);
 
                 int roundMinions = (int)(Math.random() * 10) + 1;
-                //totalMinions += roundMinions;
+                Minion.minionsEarned += roundMinions;
                 label1.setText("" + ((int)(Math.random()* 10) + 1));
                 label2.setText("" + roundMinions);
                 label3.setText("" + ((int)(Math.random()* 10) + 1));
@@ -201,7 +203,7 @@ public class Main {
                 present3.setBackground(Color.YELLOW);
 
                 int roundMinions = (int)(Math.random() * 10) + 1;
-                //totalMinions += roundMinions;
+                Minion.minionsEarned += roundMinions;
                 label1.setText("" + ((int)(Math.random()* 10) + 1));
                 label2.setText("" + ((int)(Math.random()* 10) + 1));
                 label3.setText("" + roundMinions);
@@ -241,7 +243,7 @@ public class Main {
         seeMinionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for(int i = 0; i < totalMinions; i++) {
+                for(int i = 0; i < Minion.minionsEarned; i++) {
                     ImageIcon minionIcon = new ImageIcon("Images/minionPicture.png");
                     minionIcon.setImage(minionIcon.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
                     minionPanel.add(new JLabel(minionIcon));

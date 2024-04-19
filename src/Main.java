@@ -39,9 +39,13 @@ public class Main {
         afterChoosePanel.setLayout(new GridLayout(3, 1));
 
         // minionPanel
-        MyPanel minionPanel = new MyPanel(frame.getWidth(), frame.getHeight(), 0, 0);
+        MyPanel minionPanel = new MyPanel(frame.getWidth(), (frame.getHeight() / 10) * 9, 0, 0);
         minionPanel.setSize(minionPanel.getWidth(), minionPanel.getHeight());
         minionPanel.setLayout(new GridLayout(10, 10));
+
+        // backFromMinionPanel
+        MyPanel backFromMinionPanel = new MyPanel(frame.getWidth(), frame.getHeight() / 20, 0, 0);
+        backFromMinionPanel.setSize(backFromMinionPanel.getWidth(), backFromMinionPanel.getHeight());
 
 
 
@@ -80,10 +84,14 @@ public class Main {
         // minionPanel Components
         int totalMinions = 100;
 
+        // backFromMinionPanel Components
+        JButton backFromMinionsButton = new JButton("Back to Round");
 
 
 
-                                // ADDING COMPONENTS TO PANEL
+
+
+        // ADDING COMPONENTS TO PANEL
         // introPanel
         introPanel.add(titleLabel);
         introPanel.add(instructionsButton);
@@ -109,11 +117,26 @@ public class Main {
         afterChoosePanel.add(seeMinionsButton);
         afterChoosePanel.add(newRoundButton);
 
+        // backFromMinionPanel
+        backFromMinionPanel.add(backFromMinionsButton);
+
 
 
                         // ADDING PANELS TO FRAME / MAKING FRAME VISIBLE
         frame.add(introPanel);
         frame.setVisible(true);
+
+
+
+                       // ADDING MINIONS TO THE SCREEN
+        /*ImageIcon[] minionsArray = new ImageIcon[100];
+        for(int i = 0; i < 100; i++) {
+            ImageIcon minionIcon = new ImageIcon("Images/minionPicture.png");
+            minionIcon.setImage(minionIcon.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+            minionPanel.add(new JLabel(minionIcon));
+            minionsArray[i] = minionIcon;
+
+        }*/
 
 
 
@@ -244,17 +267,49 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for(int i = 0; i < Minion.minionsEarned; i++) {
+
                     ImageIcon minionIcon = new ImageIcon("Images/minionPicture.png");
-                    minionIcon.setImage(minionIcon.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
+                    minionIcon.setImage(minionIcon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
                     minionPanel.add(new JLabel(minionIcon));
                 }
                 bigPanel.remove(instructPanel);
                 bigPanel.remove(presentPanel);
                 bigPanel.remove(afterChoosePanel);
-                bigPanel.setLayout(new GridLayout(1, 1));
-                bigPanel.add(minionPanel);
+                bigPanel.setLayout(new BorderLayout());
+                bigPanel.add(backFromMinionPanel, BorderLayout.PAGE_START);
+                bigPanel.add(minionPanel, BorderLayout.CENTER);
                 bigPanel.revalidate();
                 bigPanel.repaint();
+            }
+        });
+
+        backFromMinionsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bigPanel.remove(backFromMinionPanel);
+                bigPanel.remove(minionPanel);
+                bigPanel.setLayout(new GridLayout(3, 1));
+                bigPanel.add(instructPanel);
+                bigPanel.add(presentPanel);
+                bigPanel.revalidate();
+                bigPanel.repaint();
+
+                present1.setEnabled(true);
+                present2.setEnabled(true);
+                present3.setEnabled(true);
+
+                present1.setIcon(closed);
+                present2.setIcon(closed);
+                present3.setIcon(closed);
+
+                present1.setBackground(Color.BLACK);
+                present2.setBackground(Color.BLACK);
+                present3.setBackground(Color.BLACK);
+
+                label1.setText("");
+                label2.setText("");
+                label3.setText("");
+
             }
         });
     }

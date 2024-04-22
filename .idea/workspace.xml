@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56afb821-e594-484b-afb2-bd95c1419208" name="Changes" comment="Created Minion class with public static variable.">
+    <list default="true" id="56afb821-e594-484b-afb2-bd95c1419208" name="Changes" comment="Added the backFromMinionPanel and backFromMinionButton to the results screen.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -151,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712679897903</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added the backFromMinionPanel and backFromMinionButton to the results screen.">
+      <option name="closed" value="true" />
+      <created>1713543882680</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1713543882680</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -166,6 +174,7 @@
     <MESSAGE value="Added labelPanel to bigPanel." />
     <MESSAGE value="Made seeMinionsButton work and displayed the 100 minions." />
     <MESSAGE value="Created Minion class with public static variable." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Minion class with public static variable." />
+    <MESSAGE value="Added the backFromMinionPanel and backFromMinionButton to the results screen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the backFromMinionPanel and backFromMinionButton to the results screen." />
   </component>
 </project>

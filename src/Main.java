@@ -83,6 +83,11 @@ public class Main {
 
         // minionPanel Components
         int totalMinions = 100;
+        ArrayList<JLabel> minionsArrayList = new ArrayList<JLabel>();
+        for(int i = 0; i < 100; i++) {
+            minionsArrayList.add(new JLabel());
+        }
+        //JLabel[] minionsArray = new JLabel[100];
 
         // backFromMinionPanel Components
         JButton backFromMinionsButton = new JButton("Back to Round");
@@ -266,12 +271,37 @@ public class Main {
         seeMinionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for(int i = 0; i < Minion.minionsEarned; i++) {
-
+                int count = 0;
+                while(count < Minion.minionsEarned) {
                     ImageIcon minionIcon = new ImageIcon("Images/minionPicture.png");
                     minionIcon.setImage(minionIcon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
-                    minionPanel.add(new JLabel(minionIcon));
+                    JLabel singleMinion = new JLabel(minionIcon);
+                    minionsArrayList.set(count, singleMinion);
+                    count++;
                 }
+
+                for(int i = 0; i < minionsArrayList.size(); i++) {
+                    minionPanel.add(minionsArrayList.get(i));
+                }
+
+                count = 0;
+
+                /*for(int i = 0; i < Minion.minionsEarned; i++) {
+                    int count = 0;
+                    while(count < minionsArrayList.size()) {
+                        minionsArrayList.get(count).setVisible(true);
+                        count++;
+                    }
+                    while(minionsArrayList.size() != Minion.minionsEarned) {
+                        ImageIcon minionIcon = new ImageIcon("Images/minionPicture.png");
+                        minionIcon.setImage(minionIcon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+                        JLabel singleMinion = new JLabel(minionIcon);
+                        minionsArrayList.add(singleMinion);
+                        minionPanel.add(singleMinion);
+                    }
+                    //for(int i = )
+                }*/
+
                 bigPanel.remove(instructPanel);
                 bigPanel.remove(presentPanel);
                 bigPanel.remove(afterChoosePanel);
@@ -286,6 +316,10 @@ public class Main {
         backFromMinionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                /*for(int i = 0; i < minionsArrayList.size(); i++) {
+                    minionsArrayList.get(i).setVisible(false);
+                }*/
+
                 bigPanel.remove(backFromMinionPanel);
                 bigPanel.remove(minionPanel);
                 bigPanel.setLayout(new GridLayout(3, 1));

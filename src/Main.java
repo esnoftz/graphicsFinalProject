@@ -82,15 +82,14 @@ public class Main {
         JButton newRoundButton = new JButton("New Round");
 
         // minionPanel Components
-        int totalMinions = 100;
         ArrayList<JLabel> minionsArrayList = new ArrayList<JLabel>();
         for(int i = 0; i < 100; i++) {
             minionsArrayList.add(new JLabel());
         }
-        //JLabel[] minionsArray = new JLabel[100];
 
         // backFromMinionPanel Components
         JButton backFromMinionsButton = new JButton("Back to Round");
+        JLabel totalMinionLabel = new JLabel("");
 
 
 
@@ -124,24 +123,13 @@ public class Main {
 
         // backFromMinionPanel
         backFromMinionPanel.add(backFromMinionsButton);
+        backFromMinionPanel.add(totalMinionLabel);
 
 
 
                         // ADDING PANELS TO FRAME / MAKING FRAME VISIBLE
         frame.add(introPanel);
         frame.setVisible(true);
-
-
-
-                       // ADDING MINIONS TO THE SCREEN
-        /*ImageIcon[] minionsArray = new ImageIcon[100];
-        for(int i = 0; i < 100; i++) {
-            ImageIcon minionIcon = new ImageIcon("Images/minionPicture.png");
-            minionIcon.setImage(minionIcon.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT));
-            minionPanel.add(new JLabel(minionIcon));
-            minionsArray[i] = minionIcon;
-
-        }*/
 
 
 
@@ -172,6 +160,7 @@ public class Main {
                 present1.setBackground(Color.YELLOW);
 
                 int roundMinions = ((int)(Math.random() * 10) + 1);
+                Minion.addMinions += roundMinions;
                 Minion.minionsEarned += roundMinions;
                 label1.setText("" + roundMinions);
                 //label1.setHorizontalTextPosition(JLabel.CENTER); why doesn't this do anythingggggg???
@@ -203,6 +192,7 @@ public class Main {
                 present2.setBackground(Color.YELLOW);
 
                 int roundMinions = (int)(Math.random() * 10) + 1;
+                Minion.addMinions += roundMinions;
                 Minion.minionsEarned += roundMinions;
                 label1.setText("" + ((int)(Math.random()* 10) + 1));
                 label2.setText("" + roundMinions);
@@ -231,6 +221,7 @@ public class Main {
                 present3.setBackground(Color.YELLOW);
 
                 int roundMinions = (int)(Math.random() * 10) + 1;
+                Minion.addMinions += roundMinions;
                 Minion.minionsEarned += roundMinions;
                 label1.setText("" + ((int)(Math.random()* 10) + 1));
                 label2.setText("" + ((int)(Math.random()* 10) + 1));
@@ -271,36 +262,19 @@ public class Main {
         seeMinionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int count = 0;
-                while(count < Minion.minionsEarned) {
+                while(Minion.addMinions > 0) {
                     ImageIcon minionIcon = new ImageIcon("Images/minionPicture.png");
                     minionIcon.setImage(minionIcon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
                     JLabel singleMinion = new JLabel(minionIcon);
-                    minionsArrayList.set(count, singleMinion);
-                    count++;
+                    minionsArrayList.set(Minion.minionsEarned - Minion.addMinions, singleMinion);
+                    Minion.addMinions--;
                 }
 
                 for(int i = 0; i < minionsArrayList.size(); i++) {
                     minionPanel.add(minionsArrayList.get(i));
                 }
 
-                count = 0;
-
-                /*for(int i = 0; i < Minion.minionsEarned; i++) {
-                    int count = 0;
-                    while(count < minionsArrayList.size()) {
-                        minionsArrayList.get(count).setVisible(true);
-                        count++;
-                    }
-                    while(minionsArrayList.size() != Minion.minionsEarned) {
-                        ImageIcon minionIcon = new ImageIcon("Images/minionPicture.png");
-                        minionIcon.setImage(minionIcon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
-                        JLabel singleMinion = new JLabel(minionIcon);
-                        minionsArrayList.add(singleMinion);
-                        minionPanel.add(singleMinion);
-                    }
-                    //for(int i = )
-                }*/
+                totalMinionLabel.setText("Total Minions Earned: " + Minion.minionsEarned);
 
                 bigPanel.remove(instructPanel);
                 bigPanel.remove(presentPanel);
@@ -316,9 +290,7 @@ public class Main {
         backFromMinionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*for(int i = 0; i < minionsArrayList.size(); i++) {
-                    minionsArrayList.get(i).setVisible(false);
-                }*/
+                minionPanel.removeAll();
 
                 bigPanel.remove(backFromMinionPanel);
                 bigPanel.remove(minionPanel);

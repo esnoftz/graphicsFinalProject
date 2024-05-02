@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,6 +48,11 @@ public class Main {
         MyPanel backFromMinionPanel = new MyPanel(frame.getWidth(), frame.getHeight() / 20, 0, 0);
         backFromMinionPanel.setSize(backFromMinionPanel.getWidth(), backFromMinionPanel.getHeight());
 
+        // winnerPanel
+        MyPanel winnerPanel = new MyPanel(frame.getWidth(), frame.getHeight(), 0, 0);
+        winnerPanel.setSize(winnerPanel.getWidth(), winnerPanel.getHeight());
+        winnerPanel.setLayout(new GridLayout(3, 1));
+
 
 
                                         // COMPONENTS
@@ -91,11 +97,14 @@ public class Main {
         JButton backFromMinionsButton = new JButton("Back to Round");
         JLabel totalMinionLabel = new JLabel("");
 
+        // winnerPanel Components
+        JLabel winnerLabel = new JLabel("YOU WON!!!");
+        JLabel winnerLabel2 = new JLabel("With a final score of " + Minion.minionsEarned + " minions in " + Minion.roundCount + " rounds!");
+        JButton playAgainButton = new JButton("Play Again!");
 
 
 
-
-        // ADDING COMPONENTS TO PANEL
+                                                    // ADDING COMPONENTS TO PANEL
         // introPanel
         introPanel.add(titleLabel);
         introPanel.add(instructionsButton);
@@ -125,6 +134,10 @@ public class Main {
         backFromMinionPanel.add(backFromMinionsButton);
         backFromMinionPanel.add(totalMinionLabel);
 
+        // winnerPanel
+        winnerPanel.add(winnerLabel);
+        winnerPanel.add(winnerLabel2);
+        winnerPanel.add(playAgainButton);
 
 
                         // ADDING PANELS TO FRAME / MAKING FRAME VISIBLE
@@ -172,7 +185,20 @@ public class Main {
                 bigPanel.revalidate();
                 bigPanel.repaint();
 
-                System.out.println(Minion.minionsEarned);
+                if(Minion.minionsEarned >= 100) {
+                    //bigPanel.remove(instructPanel);
+                   // bigPanel.remove(presentPanel);
+                    //bigPanel.remove(afterChoosePanel);
+                    frame.remove(bigPanel);
+                    //bigPanel.setLayout(new FlowLayout());
+                    //bigPanel.add(winnerPanel);
+                    frame.add(winnerPanel);
+                    bigPanel.revalidate();
+                    bigPanel.repaint();
+                }
+
+                Minion.roundCount++;
+
             }
         });
 
@@ -202,6 +228,20 @@ public class Main {
                 bigPanel.add(afterChoosePanel);
                 bigPanel.revalidate();
                 bigPanel.repaint();
+
+                if(Minion.minionsEarned >= 100) {
+                    bigPanel.remove(instructPanel);
+                    bigPanel.remove(presentPanel);
+                    bigPanel.remove(afterChoosePanel);
+                    bigPanel.setLayout(new FlowLayout());
+                    bigPanel.add(winnerPanel);
+                    bigPanel.revalidate();
+                    bigPanel.repaint();
+                }
+
+                Minion.roundCount++;
+
+
             }
         });
 
@@ -231,6 +271,19 @@ public class Main {
                 bigPanel.add(afterChoosePanel);
                 bigPanel.revalidate();
                 bigPanel.repaint();
+
+                if(Minion.minionsEarned >= 100) {
+                    bigPanel.remove(instructPanel);
+                    bigPanel.remove(presentPanel);
+                    bigPanel.remove(afterChoosePanel);
+                    bigPanel.setLayout(new FlowLayout());
+                    bigPanel.add(winnerPanel);
+                    bigPanel.revalidate();
+                    bigPanel.repaint();
+                }
+
+                Minion.roundCount++;
+
             }
         });
 

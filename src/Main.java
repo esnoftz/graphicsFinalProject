@@ -53,6 +53,11 @@ public class Main {
         winnerPanel.setSize(winnerPanel.getWidth(), winnerPanel.getHeight());
         winnerPanel.setLayout(new GridLayout(3, 1));
 
+        // loserPanel
+        MyPanel loserPanel = new MyPanel(frame.getWidth(), frame.getHeight(), 0, 0);
+        loserPanel.setSize(loserPanel.getWidth(), winnerPanel.getHeight());
+        loserPanel.setLayout(new GridLayout(3, 1));
+
 
 
                                         // COMPONENTS
@@ -77,7 +82,7 @@ public class Main {
         JLabel label3 = new JLabel("");
 
         // instructPanel Components
-        JLabel instructLabel = new JLabel("Choose a present to find out how many minions you will earn this round!");
+        JLabel instructLabel = new JLabel("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
         instructLabel.setFont(new Font("Instructions", 1, 20));
 
         // afterChoosePanel Components
@@ -99,7 +104,7 @@ public class Main {
 
         // winnerPanel Components
         JLabel winnerLabel = new JLabel("YOU WON!!!");
-        JLabel winnerLabel2 = new JLabel("With a final score of " + Minion.minionsEarned + " minions in " + Minion.roundCount + " rounds!");
+        JLabel winnerLabel2 = new JLabel("");
         JButton playAgainButton = new JButton("Play Again!");
 
 
@@ -172,13 +177,13 @@ public class Main {
 
                 present1.setBackground(Color.YELLOW);
 
-                int roundMinions = ((int)(Math.random() * 10) + 1);
+                int roundMinions = ((int)(Math.random() * 15) + 1);
                 Minion.addMinions += roundMinions;
                 Minion.minionsEarned += roundMinions;
                 label1.setText("" + roundMinions);
                 //label1.setHorizontalTextPosition(JLabel.CENTER); why doesn't this do anythingggggg???
-                label2.setText("" + ((int)(Math.random()* 10) + 1));
-                label3.setText("" + ((int)(Math.random()* 10) + 1));
+                label2.setText("" + ((int)(Math.random()* 15) + 1));
+                label3.setText("" + ((int)(Math.random()* 15) + 1));
 
                 afterChooseLabel.setText("You have earned " + roundMinions + " minions this round!");
                 bigPanel.add(afterChoosePanel);
@@ -186,18 +191,21 @@ public class Main {
                 bigPanel.repaint();
 
                 if(Minion.minionsEarned >= 100) {
-                    //bigPanel.remove(instructPanel);
-                   // bigPanel.remove(presentPanel);
-                    //bigPanel.remove(afterChoosePanel);
-                    frame.remove(bigPanel);
-                    //bigPanel.setLayout(new FlowLayout());
-                    //bigPanel.add(winnerPanel);
-                    frame.add(winnerPanel);
+                    winnerLabel2.setText("With a final score of " + Minion.minionsEarned + " minions in " + Minion.roundCount + " rounds!");
+                    bigPanel.remove(instructPanel);
+                    bigPanel.remove(presentPanel);
+                    bigPanel.remove(afterChoosePanel);
+                    bigPanel.setLayout(new FlowLayout());
+                    bigPanel.add(winnerPanel);
                     bigPanel.revalidate();
                     bigPanel.repaint();
                 }
 
                 Minion.roundCount++;
+                Minion.roundLimit--;
+                instructLabel.setText("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
+
+                System.out.println(Minion.roundCount);
 
             }
         });
@@ -217,12 +225,12 @@ public class Main {
 
                 present2.setBackground(Color.YELLOW);
 
-                int roundMinions = (int)(Math.random() * 10) + 1;
+                int roundMinions = (int)(Math.random() * 15) + 1;
                 Minion.addMinions += roundMinions;
                 Minion.minionsEarned += roundMinions;
-                label1.setText("" + ((int)(Math.random()* 10) + 1));
+                label1.setText("" + ((int)(Math.random()* 15) + 1));
                 label2.setText("" + roundMinions);
-                label3.setText("" + ((int)(Math.random()* 10) + 1));
+                label3.setText("" + ((int)(Math.random()* 15) + 1));
 
                 afterChooseLabel.setText("You have earned " + roundMinions + " minions this round!");
                 bigPanel.add(afterChoosePanel);
@@ -230,6 +238,7 @@ public class Main {
                 bigPanel.repaint();
 
                 if(Minion.minionsEarned >= 100) {
+                    winnerLabel2.setText("With a final score of " + Minion.minionsEarned + " minions in " + Minion.roundCount + " rounds!");
                     bigPanel.remove(instructPanel);
                     bigPanel.remove(presentPanel);
                     bigPanel.remove(afterChoosePanel);
@@ -240,6 +249,10 @@ public class Main {
                 }
 
                 Minion.roundCount++;
+                Minion.roundLimit--;
+                instructLabel.setText("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
+
+                System.out.println(Minion.roundCount);
 
 
             }
@@ -260,11 +273,11 @@ public class Main {
 
                 present3.setBackground(Color.YELLOW);
 
-                int roundMinions = (int)(Math.random() * 10) + 1;
+                int roundMinions = (int)(Math.random() * 15) + 1;
                 Minion.addMinions += roundMinions;
                 Minion.minionsEarned += roundMinions;
-                label1.setText("" + ((int)(Math.random()* 10) + 1));
-                label2.setText("" + ((int)(Math.random()* 10) + 1));
+                label1.setText("" + ((int)(Math.random()* 15) + 1));
+                label2.setText("" + ((int)(Math.random()* 15) + 1));
                 label3.setText("" + roundMinions);
 
                 afterChooseLabel.setText("You have earned " + roundMinions + " minions this round!");
@@ -273,6 +286,7 @@ public class Main {
                 bigPanel.repaint();
 
                 if(Minion.minionsEarned >= 100) {
+                    winnerLabel2.setText("With a final score of " + Minion.minionsEarned + " minions in " + Minion.roundCount + " rounds!");
                     bigPanel.remove(instructPanel);
                     bigPanel.remove(presentPanel);
                     bigPanel.remove(afterChoosePanel);
@@ -283,6 +297,10 @@ public class Main {
                 }
 
                 Minion.roundCount++;
+                Minion.roundLimit--;
+                instructLabel.setText("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
+
+                System.out.println(Minion.roundCount);
 
             }
         });

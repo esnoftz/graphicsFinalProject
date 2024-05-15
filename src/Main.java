@@ -93,9 +93,9 @@ public class Main {
         JButton newRoundButton = new JButton("New Round");
 
         // minionPanel Components
-        ArrayList<JLabel> minionsArrayList = new ArrayList<JLabel>();
+        //ArrayList<JLabel> minionsArrayList = new ArrayList<JLabel>();
         for(int i = 0; i < 100; i++) {
-            minionsArrayList.add(new JLabel());
+            Minion.minionsArrayList.add(new JLabel());
         }
 
         // backFromMinionPanel Components
@@ -380,12 +380,13 @@ public class Main {
                     ImageIcon minionIcon = new ImageIcon("Images/minionPicture.png");
                     minionIcon.setImage(minionIcon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
                     JLabel singleMinion = new JLabel(minionIcon);
-                    minionsArrayList.set(Minion.minionsEarned - Minion.addMinions, singleMinion);
+                    Minion.minionsArrayList.set(Minion.minionsEarned - Minion.addMinions, singleMinion);
                     Minion.addMinions--;
                 }
 
-                for(int i = 0; i < minionsArrayList.size(); i++) {
-                    minionPanel.add(minionsArrayList.get(i));
+                for(int i = 0; i < Minion.minionsArrayList.size(); i++) {
+                    minionPanel.add(Minion.minionsArrayList.get(i));
+                    //Minion.minionsArrayList.get(i).setVisible(false);
                 }
 
                 totalMinionLabel.setText("Total Minions Earned: " + Minion.minionsEarned);
@@ -429,6 +430,79 @@ public class Main {
                 label1.setText("");
                 label2.setText("");
                 label3.setText("");
+
+            }
+        });
+
+        playAgainButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Minion.roundLimit = (int)(Math.random() * 6) + 10;
+                Minion.minionsEarned = 0;
+
+                bigPanel.remove(winnerPanel);
+                bigPanel.setLayout(new GridLayout(3, 1));
+                bigPanel.add(instructLabel);
+                bigPanel.add(presentPanel);
+                bigPanel.revalidate();
+                bigPanel.repaint();
+
+                present1.setEnabled(true);
+                present2.setEnabled(true);
+                present3.setEnabled(true);
+
+                present1.setIcon(closed);
+                present2.setIcon(closed);
+                present3.setIcon(closed);
+
+                present1.setBackground(Color.BLACK);
+                present2.setBackground(Color.BLACK);
+                present3.setBackground(Color.BLACK);
+
+                label1.setText("");
+                label2.setText("");
+                label3.setText("");
+
+
+            }
+        });
+
+        playAgainButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Minion.roundLimit = (int)(Math.random() * 6) + 10;
+                Minion.minionsEarned = 0;
+
+                bigPanel.remove(loserPanel);
+                bigPanel.setLayout(new GridLayout(3, 1));
+                bigPanel.add(instructLabel);
+                bigPanel.add(presentPanel);
+                bigPanel.revalidate();
+                bigPanel.repaint();
+
+                present1.setEnabled(true);
+                present2.setEnabled(true);
+                present3.setEnabled(true);
+
+                present1.setIcon(closed);
+                present2.setIcon(closed);
+                present3.setIcon(closed);
+
+                present1.setBackground(Color.BLACK);
+                present2.setBackground(Color.BLACK);
+                present3.setBackground(Color.BLACK);
+
+                label1.setText("");
+                label2.setText("");
+                label3.setText("");
+
+                for(int i = 0; i < Minion.minionsArrayList.size(); i++) {
+                    minionPanel.remove(Minion.minionsArrayList.get(i));
+                    minionPanel.revalidate();
+                    minionPanel.repaint();
+                }
+
+                Minion.minionsArrayList = new ArrayList<JLabel>();
 
             }
         });

@@ -107,6 +107,11 @@ public class Main {
         JLabel winnerLabel2 = new JLabel("");
         JButton playAgainButton = new JButton("Play Again!");
 
+        // loserPanel Components
+        JLabel loserLabel = new JLabel("YOU LOST!!!");
+        JLabel loserLabel2 = new JLabel("");
+        JButton playAgainButton2 = new JButton("Play Again!");
+
 
 
                                                     // ADDING COMPONENTS TO PANEL
@@ -143,6 +148,11 @@ public class Main {
         winnerPanel.add(winnerLabel);
         winnerPanel.add(winnerLabel2);
         winnerPanel.add(playAgainButton);
+
+        // loserPanel
+        loserPanel.add(loserLabel);
+        loserPanel.add(loserLabel2);
+        loserPanel.add(playAgainButton2);
 
 
                         // ADDING PANELS TO FRAME / MAKING FRAME VISIBLE
@@ -201,8 +211,19 @@ public class Main {
                     bigPanel.repaint();
                 }
 
-                Minion.roundCount++;
                 Minion.roundLimit--;
+                if((Minion.minionsEarned < 100) && (Minion.roundLimit == 0)) {
+                    loserLabel2.setText("You were " + (100 - Minion.minionsEarned) + " minions short of 100 minions!");
+                    bigPanel.remove(instructPanel);
+                    bigPanel.remove(presentPanel);
+                    bigPanel.remove(afterChoosePanel);
+                    bigPanel.setLayout(new FlowLayout());
+                    bigPanel.add(loserPanel);
+                    bigPanel.revalidate();
+                    bigPanel.repaint();
+                }
+
+                Minion.roundCount++;
                 instructLabel.setText("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
 
                 System.out.println(Minion.roundCount);
@@ -248,8 +269,19 @@ public class Main {
                     bigPanel.repaint();
                 }
 
-                Minion.roundCount++;
                 Minion.roundLimit--;
+                if((Minion.minionsEarned < 100) && (Minion.roundLimit == 0)) {
+                    loserLabel2.setText("You were " + (100 - Minion.minionsEarned) + " minions short of 100 minions!");
+                    bigPanel.remove(instructPanel);
+                    bigPanel.remove(presentPanel);
+                    bigPanel.remove(afterChoosePanel);
+                    bigPanel.setLayout(new FlowLayout());
+                    bigPanel.add(loserPanel);
+                    bigPanel.revalidate();
+                    bigPanel.repaint();
+                }
+
+                Minion.roundCount++;
                 instructLabel.setText("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
 
                 System.out.println(Minion.roundCount);
@@ -296,8 +328,19 @@ public class Main {
                     bigPanel.repaint();
                 }
 
-                Minion.roundCount++;
                 Minion.roundLimit--;
+                if((Minion.minionsEarned < 100) && (Minion.roundLimit == 0)) {
+                    loserLabel2.setText("You were " + (100 - Minion.minionsEarned) + " minions short of 100 minions!");
+                    bigPanel.remove(instructPanel);
+                    bigPanel.remove(presentPanel);
+                    bigPanel.remove(afterChoosePanel);
+                    bigPanel.setLayout(new FlowLayout());
+                    bigPanel.add(loserPanel);
+                    bigPanel.revalidate();
+                    bigPanel.repaint();
+                }
+
+                Minion.roundCount++;
                 instructLabel.setText("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
 
                 System.out.println(Minion.roundCount);

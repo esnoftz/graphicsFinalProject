@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56afb821-e594-484b-afb2-bd95c1419208" name="Changes" comment="Worked on winnerPanel.">
+    <list default="true" id="56afb821-e594-484b-afb2-bd95c1419208" name="Changes" comment="Worked on loserPanel.">
+      <change afterPath="$PROJECT_DIR$/Images/purpleMinionImage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_15_24__10_43AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_15_24__10_43AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Minion.java" afterDir="false" />
@@ -53,6 +55,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\esnof\IdeaProjects\graphicsFinalProject\Images" />
       <recent name="$PROJECT_DIR$/Images" />
     </key>
   </component>

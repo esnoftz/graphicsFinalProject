@@ -55,8 +55,13 @@ public class Main {
 
         // loserPanel
         MyPanel loserPanel = new MyPanel(frame.getWidth(), frame.getHeight(), 0, 0);
-        loserPanel.setSize(loserPanel.getWidth(), winnerPanel.getHeight());
+        loserPanel.setSize(loserPanel.getWidth(), loserPanel.getHeight());
         loserPanel.setLayout(new GridLayout(3, 1));
+
+        // purpleMinonPanel
+        MyPanel purpleMinionPanel = new MyPanel(frame.getWidth(), frame.getHeight(), 0, 0);
+        purpleMinionPanel.setSize(purpleMinionPanel.getWidth(), purpleMinionPanel.getHeight());
+        purpleMinionPanel.setLayout(new GridLayout(3, 1));
 
 
 
@@ -105,12 +110,19 @@ public class Main {
         // winnerPanel Components
         JLabel winnerLabel = new JLabel("YOU WON!!!");
         JLabel winnerLabel2 = new JLabel("");
-        JButton playAgainButton = new JButton("Play Again!");
+        JButton playAgainButtonWin = new JButton("Play Again!");
 
         // loserPanel Components
         JLabel loserLabel = new JLabel("YOU LOST!!!");
         JLabel loserLabel2 = new JLabel("");
-        JButton playAgainButton2 = new JButton("Play Again!");
+        JButton playAgainButtonLose = new JButton("Play Again!");
+
+        // purpleMinionPanel Components
+        ImageIcon purpleIcon = new ImageIcon("Images/purpleMinionImage.png");
+        JLabel purpleMinionPic = new JLabel(purpleIcon);
+        purpleIcon.setImage(purpleIcon.getImage().getScaledInstance(230, 230, Image.SCALE_DEFAULT));
+        JLabel purpleMinionText = new JLabel("");
+        JButton purpleBackButton = new JButton("Back To Rounds");
 
 
 
@@ -147,12 +159,17 @@ public class Main {
         // winnerPanel
         winnerPanel.add(winnerLabel);
         winnerPanel.add(winnerLabel2);
-        winnerPanel.add(playAgainButton);
+        winnerPanel.add(playAgainButtonWin);
 
         // loserPanel
         loserPanel.add(loserLabel);
         loserPanel.add(loserLabel2);
-        loserPanel.add(playAgainButton2);
+        loserPanel.add(playAgainButtonLose);
+
+        // purpleMinionPanel
+        purpleMinionPanel.add(purpleMinionText);
+        purpleMinionPanel.add(purpleMinionPic);
+        purpleMinionPanel.add(purpleBackButton);
 
 
                         // ADDING PANELS TO FRAME / MAKING FRAME VISIBLE
@@ -226,7 +243,34 @@ public class Main {
                 Minion.roundCount++;
                 instructLabel.setText("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
 
-                System.out.println(Minion.roundCount);
+                if(Minion.minionsEarned - roundMinions >= 10){
+                    Minion.purpleMinion = (int)(Math.random() * 10) + 1;
+                    System.out.println("Purple: " + Minion.purpleMinion);
+                    if(Minion.purpleMinion <= 3) {
+                        Minion.minionsEarned -= roundMinions;
+                        Minion.addMinions -= roundMinions;
+                        System.out.println("Add: " + Minion.addMinions);
+                        int ran = (int)(Math.random() * 10) + 1;
+                        bigPanel.remove(instructPanel);
+                        bigPanel.remove(presentPanel);
+                        bigPanel.remove(afterChoosePanel);
+                        //bigPanel.setLayout(new FlowLayout());
+                        //bigPanel.add(purpleMinionPanel);
+                        bigPanel.add(purpleMinionText);
+                        bigPanel.add(purpleMinionPic);
+                        bigPanel.add(purpleBackButton);
+                        bigPanel.revalidate();
+                        bigPanel.repaint();
+                        Minion.minionsEarned -= ran;
+                        Minion.addMinions -= ran;
+                        if (Minion.addMinions < 0) {
+                            Minion.removedMinions += (Minion.addMinions * -1);
+                            Minion.addMinions = 0;
+                        }
+                        purpleMinionText.setText("PURPLE MINION ATTACK! He ate " + ran + " minions!");
+                    }
+
+                }
 
             }
         });
@@ -284,8 +328,34 @@ public class Main {
                 Minion.roundCount++;
                 instructLabel.setText("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
 
-                System.out.println(Minion.roundCount);
+                if(Minion.minionsEarned - roundMinions >= 10){
+                    Minion.purpleMinion = (int)(Math.random() * 10) + 1;
+                    System.out.println("Purple " + Minion.purpleMinion);
+                    if(Minion.purpleMinion <= 3) {
+                        Minion.minionsEarned -= roundMinions;
+                        Minion.addMinions -= roundMinions;
+                        System.out.println("Add: " + Minion.addMinions);
+                        int ran = (int)(Math.random() * 10) + 1;
+                        bigPanel.remove(instructPanel);
+                        bigPanel.remove(presentPanel);
+                        bigPanel.remove(afterChoosePanel);
+                        //bigPanel.setLayout(new FlowLayout());
+                        //bigPanel.add(purpleMinionPanel);
+                        bigPanel.add(purpleMinionText);
+                        bigPanel.add(purpleMinionPic);
+                        bigPanel.add(purpleBackButton);
+                        bigPanel.revalidate();
+                        bigPanel.repaint();
+                        Minion.minionsEarned -= ran;
+                        Minion.addMinions -= ran;
+                        if (Minion.addMinions < 0) {
+                            Minion.removedMinions += (Minion.addMinions * -1);
+                            Minion.addMinions = 0;
+                        }
+                        purpleMinionText.setText("PURPLE MINION ATTACK! He ate " + ran + " minions!");
+                    }
 
+                }
 
             }
         });
@@ -343,8 +413,35 @@ public class Main {
                 Minion.roundCount++;
                 instructLabel.setText("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
 
-                System.out.println(Minion.roundCount);
+                if(Minion.minionsEarned - roundMinions >= 10){
+                    Minion.purpleMinion = (int)(Math.random() * 10) + 1;
+                    System.out.println("Purple: " + Minion.purpleMinion);
+                    if(Minion.purpleMinion <= 3) {
+                        Minion.minionsEarned -= roundMinions;
+                        Minion.addMinions -= roundMinions;
+                        System.out.println("Add: " + Minion.addMinions);
+                        int ran = (int)(Math.random() * 10) + 1;
+                        bigPanel.remove(instructPanel);
+                        bigPanel.remove(presentPanel);
+                        bigPanel.remove(afterChoosePanel);
+                        //bigPanel.setLayout(new FlowLayout());
+                        //bigPanel.add(purpleMinionPanel);
+                        bigPanel.add(purpleMinionText);
+                        bigPanel.add(purpleMinionPic);
+                        bigPanel.add(purpleBackButton);
+                        bigPanel.revalidate();
+                        bigPanel.repaint();
+                        Minion.minionsEarned -= ran;
+                        Minion.addMinions -= ran;
+                        if (Minion.addMinions < 0) {
+                            Minion.removedMinions += (Minion.addMinions * -1);
+                            Minion.addMinions = 0;
+                        }
 
+                        purpleMinionText.setText("PURPLE MINION ATTACK! He ate " + ran + " minions!");
+                    }
+
+                }
             }
         });
 
@@ -376,6 +473,24 @@ public class Main {
         seeMinionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("Earned: " + Minion.minionsEarned);
+                System.out.println("Add: " + Minion.addMinions);
+                System.out.println("Removed: " + Minion.removedMinions);
+                if (Minion.removedMinions > 0) {
+                    Minion.removedMinions -= Minion.addMinions;
+                    if(Minion.removedMinions < 0) {
+                        Minion.addMinions += (Minion.removedMinions * -1);
+                        Minion.removedMinions = 0;
+                    }
+
+                    for(int i = 0; i < Minion.removedMinions; i++) {
+                        minionPanel.remove(Minion.minionsArrayList.get(i));
+                        Minion.minionsArrayList.add(new JLabel());
+                    }
+                    minionPanel.revalidate();
+                    minionPanel.repaint();
+                }
+                Minion.removedMinions = 0;
                 while(Minion.addMinions > 0) {
                     ImageIcon minionIcon = new ImageIcon("Images/minionPicture.png");
                     minionIcon.setImage(minionIcon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
@@ -383,6 +498,7 @@ public class Main {
                     Minion.minionsArrayList.set(Minion.minionsEarned - Minion.addMinions, singleMinion);
                     Minion.addMinions--;
                 }
+                Minion.pastNum = Minion.minionsEarned;
 
                 for(int i = 0; i < Minion.minionsArrayList.size(); i++) {
                     minionPanel.add(Minion.minionsArrayList.get(i));
@@ -434,48 +550,20 @@ public class Main {
             }
         });
 
-        playAgainButton.addActionListener(new ActionListener() {
+        playAgainButtonWin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Minion.roundLimit = (int)(Math.random() * 6) + 10;
                 Minion.minionsEarned = 0;
+                Minion.addMinions = 0;
+                Minion.roundCount = 0;
+                Minion.removedMinions = 0;
+
+                instructLabel.setText("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
 
                 bigPanel.remove(winnerPanel);
                 bigPanel.setLayout(new GridLayout(3, 1));
-                bigPanel.add(instructLabel);
-                bigPanel.add(presentPanel);
-                bigPanel.revalidate();
-                bigPanel.repaint();
-
-                present1.setEnabled(true);
-                present2.setEnabled(true);
-                present3.setEnabled(true);
-
-                present1.setIcon(closed);
-                present2.setIcon(closed);
-                present3.setIcon(closed);
-
-                present1.setBackground(Color.BLACK);
-                present2.setBackground(Color.BLACK);
-                present3.setBackground(Color.BLACK);
-
-                label1.setText("");
-                label2.setText("");
-                label3.setText("");
-
-
-            }
-        });
-
-        playAgainButton2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Minion.roundLimit = (int)(Math.random() * 6) + 10;
-                Minion.minionsEarned = 0;
-
-                bigPanel.remove(loserPanel);
-                bigPanel.setLayout(new GridLayout(3, 1));
-                bigPanel.add(instructLabel);
+                bigPanel.add(instructPanel);
                 bigPanel.add(presentPanel);
                 bigPanel.revalidate();
                 bigPanel.repaint();
@@ -498,14 +586,101 @@ public class Main {
 
                 for(int i = 0; i < Minion.minionsArrayList.size(); i++) {
                     minionPanel.remove(Minion.minionsArrayList.get(i));
-                    minionPanel.revalidate();
-                    minionPanel.repaint();
                 }
+                minionPanel.revalidate();
+                minionPanel.repaint();
 
                 Minion.minionsArrayList = new ArrayList<JLabel>();
+                for(int i = 0; i < 100; i++) {
+                    Minion.minionsArrayList.add(new JLabel());
+                }
 
             }
         });
+
+        playAgainButtonLose.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Minion.roundLimit = (int)(Math.random() * 6) + 10;
+                Minion.minionsEarned = 0;
+                Minion.addMinions = 0;
+                Minion.roundCount = 0;
+                Minion.removedMinions = 0;
+
+                instructLabel.setText("Choose a present to find out how many minions you will earn this round! ROUNDS LEFT: " + Minion.roundLimit);
+
+                bigPanel.remove(loserPanel);
+                bigPanel.setLayout(new GridLayout(3, 1));
+                bigPanel.add(instructPanel);
+                bigPanel.add(presentPanel);
+                bigPanel.revalidate();
+                bigPanel.repaint();
+
+                present1.setEnabled(true);
+                present2.setEnabled(true);
+                present3.setEnabled(true);
+
+                present1.setIcon(closed);
+                present2.setIcon(closed);
+                present3.setIcon(closed);
+
+                present1.setBackground(Color.BLACK);
+                present2.setBackground(Color.BLACK);
+                present3.setBackground(Color.BLACK);
+
+                label1.setText("");
+                label2.setText("");
+                label3.setText("");
+
+                for(int i = 0; i < Minion.minionsArrayList.size(); i++) {
+                    minionPanel.remove(Minion.minionsArrayList.get(i));
+                }
+                minionPanel.revalidate();
+                minionPanel.repaint();
+
+                Minion.minionsArrayList = new ArrayList<JLabel>();
+                for(int i = 0; i < 100; i++) {
+                    Minion.minionsArrayList.add(new JLabel());
+                }
+
+            }
+        });
+
+        purpleBackButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bigPanel.remove(purpleMinionText);
+                bigPanel.remove(purpleMinionPic);
+                bigPanel.remove(purpleBackButton);
+                bigPanel.add(instructPanel);
+                bigPanel.add(presentPanel);
+                bigPanel.revalidate();
+                bigPanel.repaint();
+
+                present1.setEnabled(true);
+                present2.setEnabled(true);
+                present3.setEnabled(true);
+
+                present1.setIcon(closed);
+                present2.setIcon(closed);
+                present3.setIcon(closed);
+
+                present1.setBackground(Color.BLACK);
+                present2.setBackground(Color.BLACK);
+                present3.setBackground(Color.BLACK);
+
+                label1.setText("");
+                label2.setText("");
+                label3.setText("");
+
+            }
+        });
+
+
+
+
+
+
     }
 
 }

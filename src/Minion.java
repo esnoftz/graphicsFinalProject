@@ -8,6 +8,9 @@ public class Minion {
     public static int roundLimit = (int)(Math.random() * 6) + 10;
 
     public static ArrayList<JLabel> minionsArrayList = new ArrayList<JLabel>();
+    public static int purpleMinion = 0;
+    public static int pastNum = 0;
+    public static int removedMinions = 0;
 
 
 
